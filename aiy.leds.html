@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.leds &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiy.pins" href="aiy.pins.html" />
+    <link rel="prev" title="aiy.board" href="aiy.board.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.leds</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.leds.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-aiy.leds">
+<span id="aiy-leds"></span><h1>aiy.leds<a class="headerlink" href="#module-aiy.leds" title="Permalink to this headline">¶</a></h1>
+<p>APIs to control certain LEDs connected to the Vision/Voice Bonnet:
+the RGB LED in the button and the privacy LED in the Vision Kit.
+These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit).</p>
+<p>For examples, see <a class="reference external" href="https://github.com/google/aiyprojects-raspbian/blob/aiyprojects/src/examples/leds_example.py">leds_example.py</a>.</p>
+<p>To control LEDs attached to the bonnet’s GPIO pins or those on the Vision/Voice
+Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#module-aiy.pins" title="aiy.pins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aiy.pins</span></code></a>.</p>
+<dl class="class">
+<dt id="aiy.leds.Color">
+<em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">Color</code><a class="headerlink" href="#aiy.leds.Color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="aiy.leds.Color.BLACK">
+<code class="descname">BLACK</code><em class="property"> = (0, 0, 0)</em><a class="headerlink" href="#aiy.leds.Color.BLACK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Color.BLUE">
+<code class="descname">BLUE</code><em class="property"> = (0, 0, 255)</em><a class="headerlink" href="#aiy.leds.Color.BLUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Color.CYAN">
+<code class="descname">CYAN</code><em class="property"> = (0, 255, 255)</em><a class="headerlink" href="#aiy.leds.Color.CYAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Color.GREEN">
+<code class="descname">GREEN</code><em class="property"> = (0, 255, 0)</em><a class="headerlink" href="#aiy.leds.Color.GREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Color.PURPLE">
+<code class="descname">PURPLE</code><em class="property"> = (255, 0, 255)</em><a class="headerlink" href="#aiy.leds.Color.PURPLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Color.RED">
+<code class="descname">RED</code><em class="property"> = (255, 0, 0)</em><a class="headerlink" href="#aiy.leds.Color.RED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Color.WHITE">
+<code class="descname">WHITE</code><em class="property"> = (255, 255, 255)</em><a class="headerlink" href="#aiy.leds.Color.WHITE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Color.YELLOW">
+<code class="descname">YELLOW</code><em class="property"> = (255, 255, 0)</em><a class="headerlink" href="#aiy.leds.Color.YELLOW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Color.blend">
+<em class="property">static </em><code class="descname">blend</code><span class="sig-paren">(</span><em>color_a</em>, <em>color_b</em>, <em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Color.blend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.leds.Leds">
+<em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">Leds</code><span class="sig-paren">(</span><em>reset=True</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to control KTD LED driver chip.</p>
+<dl class="class">
+<dt id="aiy.leds.Leds.Channel">
+<em class="property">class </em><code class="descname">Channel</code><span class="sig-paren">(</span><em>state</em>, <em>brightness</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.Channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Configuration of each channel on KTD LED driver.</p>
+<dl class="attribute">
+<dt id="aiy.leds.Leds.Channel.OFF">
+<code class="descname">OFF</code><em class="property"> = 0</em><a class="headerlink" href="#aiy.leds.Leds.Channel.OFF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Leds.Channel.ON">
+<code class="descname">ON</code><em class="property"> = 1</em><a class="headerlink" href="#aiy.leds.Leds.Channel.ON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Leds.Channel.PATTERN">
+<code class="descname">PATTERN</code><em class="property"> = 2</em><a class="headerlink" href="#aiy.leds.Leds.Channel.PATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.installed">
+<em class="property">static </em><code class="descname">installed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.installed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.leds.Leds.pattern">
+<code class="descname">pattern</code><a class="headerlink" href="#aiy.leds.Leds.pattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.privacy">
+<em class="property">static </em><code class="descname">privacy</code><span class="sig-paren">(</span><em>enabled</em>, <em>brightness=255</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.privacy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns configuration for channel 4 (privacy).</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.privacy_off">
+<em class="property">static </em><code class="descname">privacy_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.privacy_off" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.privacy_on">
+<em class="property">static </em><code class="descname">privacy_on</code><span class="sig-paren">(</span><em>brightness=255</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.privacy_on" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.leds.Leds.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.rgb">
+<em class="property">static </em><code class="descname">rgb</code><span class="sig-paren">(</span><em>state</em>, <em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns configuration for channels: 1 (red), 2 (green), 3 (blue).</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.rgb_off">
+<em class="property">static </em><code class="descname">rgb_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb_off" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.rgb_on">
+<em class="property">static </em><code class="descname">rgb_on</code><span class="sig-paren">(</span><em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb_on" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Leds.rgb_pattern">
+<em class="property">static </em><code class="descname">rgb_pattern</code><span class="sig-paren">(</span><em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb_pattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.leds.Leds.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>channels</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.leds.Pattern">
+<em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">Pattern</code><span class="sig-paren">(</span><em>period_ms</em>, <em>on_percent=0.5</em>, <em>rise_ms=0</em>, <em>fall_ms=0</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to define blinking pattern.</p>
+<dl class="staticmethod">
+<dt id="aiy.leds.Pattern.blink">
+<em class="property">static </em><code class="descname">blink</code><span class="sig-paren">(</span><em>period_ms</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Pattern.blink" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="aiy.leds.Pattern.breathe">
+<em class="property">static </em><code class="descname">breathe</code><span class="sig-paren">(</span><em>period_ms</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Pattern.breathe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.leds.PrivacyLed">
+<em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">PrivacyLed</code><span class="sig-paren">(</span><em>leds</em>, <em>brightness=32</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.PrivacyLed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Helper class to turn Privacy LED off automatically.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.leds.RgbLeds">
+<em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">RgbLeds</code><span class="sig-paren">(</span><em>leds</em>, <em>channels</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.RgbLeds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Helper class to turn RGB LEDs off automatically.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aiy.pins.html" class="btn btn-neutral float-right" title="aiy.pins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aiy.board.html" class="btn btn-neutral" title="aiy.board" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

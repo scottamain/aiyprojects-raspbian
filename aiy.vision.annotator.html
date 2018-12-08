@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.vision.annotator &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiy.vision.inference" href="aiy.vision.inference.html" />
+    <link rel="prev" title="aiy.trackplayer" href="aiy.trackplayer.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.vision.annotator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.vision.annotator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-aiy.vision.annotator">
+<span id="aiy-vision-annotator"></span><h1>aiy.vision.annotator<a class="headerlink" href="#module-aiy.vision.annotator" title="Permalink to this headline">¶</a></h1>
+<p>An annotation library that draws overlays on the Raspberry Pi’s camera preview.</p>
+<p>Annotations include bounding boxes, text overlays, and points.
+Annotations support partial opacity, however only with respect to the content in
+the preview. A transparent fill value will cover up previously drawn overlay
+under it, but not the camera content under it. A color of None can be given,
+which will then not cover up overlay content drawn under the region.</p>
+<p>Note: Overlays do not persist through to the storage layer so images saved from
+the camera, will not contain overlays.</p>
+<dl class="class">
+<dt id="aiy.vision.annotator.Annotator">
+<em class="property">class </em><code class="descclassname">aiy.vision.annotator.</code><code class="descname">Annotator</code><span class="sig-paren">(</span><em>camera</em>, <em>bg_color=None</em>, <em>default_color=None</em>, <em>dimensions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.annotator.Annotator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Utility for managing annotations on the camera preview.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>camera</strong> – picamera.PiCamera camera object to overlay on top of.</li>
+<li><strong>bg_color</strong> – PIL.ImageColor (with alpha) for the background of the overlays.</li>
+<li><strong>default_color</strong> – PIL.ImageColor (with alpha) default for the drawn content.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="aiy.vision.annotator.Annotator.bounding_box">
+<code class="descname">bounding_box</code><span class="sig-paren">(</span><em>rect</em>, <em>outline=None</em>, <em>fill=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.annotator.Annotator.bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a bounding box around the specified rectangle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rect</strong> – (x1, y1, x2, y2) rectangle to be drawn - where (x1,y1) and (x2, y2)
+are opposite corners of the desired rectangle.</li>
+<li><strong>outline</strong> – PIL.ImageColor with which to draw the outline (defaults to the
+configured default_color).</li>
+<li><strong>fill</strong> – PIL.ImageColor with which to fill the rectangel (defaults to None</li>
+<li><strong>will not cover up drawings under the region.</strong> (<em>which</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.vision.annotator.Annotator.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.annotator.Annotator.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears the contents of the overlay - leaving only the plain background.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.vision.annotator.Annotator.point">
+<code class="descname">point</code><span class="sig-paren">(</span><em>location</em>, <em>radius=1</em>, <em>color=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.annotator.Annotator.point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a point of the given size at the given location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>location</strong> – (x,y) center of the point to be drawn.</li>
+<li><strong>radius</strong> – the radius of the point to be drawn.</li>
+<li><strong>color</strong> – The color to draw the point in (defaults to default_color).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.vision.annotator.Annotator.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.annotator.Annotator.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the overlay from the screen.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.vision.annotator.Annotator.text">
+<code class="descname">text</code><span class="sig-paren">(</span><em>location</em>, <em>text</em>, <em>color=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.annotator.Annotator.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the given text at the given location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>location</strong> – (x,y) point at which to draw the text (upper left corner).</li>
+<li><strong>text</strong> – string to be drawn.</li>
+<li><strong>color</strong> – PIL.ImageColor to draw the string in (defaults to default_color).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.vision.annotator.Annotator.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.annotator.Annotator.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the contents of the overlay.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aiy.vision.inference.html" class="btn btn-neutral float-right" title="aiy.vision.inference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aiy.trackplayer.html" class="btn btn-neutral" title="aiy.trackplayer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

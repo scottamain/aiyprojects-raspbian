@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.vision.models &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Voice Kit overview" href="voice.html" />
+    <link rel="prev" title="aiy.vision.inference" href="aiy.vision.inference.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.vision.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.vision.models.dish_classification">aiy.vision.models.dish_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.vision.models.dish_detection">aiy.vision.models.dish_detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.vision.models.face_detection">aiy.vision.models.face_detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.vision.models.image_classification">aiy.vision.models.image_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.vision.models.inaturalist_classification">aiy.vision.models.inaturalist_classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.vision.models.object_detection">aiy.vision.models.object_detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.vision.models.utils">aiy.vision.models.utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.vision.models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.vision.models.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aiy-vision-models">
+<h1>aiy.vision.models<a class="headerlink" href="#aiy-vision-models" title="Permalink to this headline">¶</a></h1>
+<p>A collection of modules that perform ML inferences with specific types of
+image classification and object detection models.</p>
+<p>Each of these modules has a corresponding sample app in <a class="reference external" href="https://github.com/google/aiyprojects-raspbian/tree/aiyprojects/src/examples/vision">src/examples/vision/</a>.
+Also see the instructions to <a class="reference external" href="https://aiyprojects.withgoogle.com/models/">run the models with the Vision Kit</a>.</p>
+<div class="section" id="module-aiy.vision.models.dish_classification">
+<span id="aiy-vision-models-dish-classification"></span><h2>aiy.vision.models.dish_classification<a class="headerlink" href="#module-aiy.vision.models.dish_classification" title="Permalink to this headline">¶</a></h2>
+<p>API for Dish Classification.</p>
+<dl class="function">
+<dt id="aiy.vision.models.dish_classification.get_classes">
+<code class="descclassname">aiy.vision.models.dish_classification.</code><code class="descname">get_classes</code><span class="sig-paren">(</span><em>result</em>, <em>top_k=None</em>, <em>threshold=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.dish_classification.get_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts dish classification model output to list of detected objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>result</strong> – output tensor from dish classification model.</li>
+<li><strong>top_k</strong> – int; max number of objects to return.</li>
+<li><strong>threshold</strong> – float; min probability of each returned object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>string, probability: float) pairs ordered by
+probability from highest to lowest. The number of pairs is not greater than
+top_k. Each probability is greater than threshold. For
+example:</p>
+<dl class="docutils">
+<dt>[(‘Ramen’, 0.981934)</dt>
+<dd><p class="first last">(‘Yaka mein, 0.005497)]</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">A list of (class_name</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.dish_classification.model">
+<code class="descclassname">aiy.vision.models.dish_classification.</code><code class="descname">model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.dish_classification.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-aiy.vision.models.dish_detection">
+<span id="aiy-vision-models-dish-detection"></span><h2>aiy.vision.models.dish_detection<a class="headerlink" href="#module-aiy.vision.models.dish_detection" title="Permalink to this headline">¶</a></h2>
+<p>API for Dish Detection.</p>
+<dl class="class">
+<dt id="aiy.vision.models.dish_detection.Dish">
+<em class="property">class </em><code class="descclassname">aiy.vision.models.dish_detection.</code><code class="descname">Dish</code><span class="sig-paren">(</span><em>sorted_scores</em>, <em>bounding_box</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.dish_detection.Dish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dl class="attribute">
+<dt id="aiy.vision.models.dish_detection.Dish.bounding_box">
+<code class="descname">bounding_box</code><a class="headerlink" href="#aiy.vision.models.dish_detection.Dish.bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.vision.models.dish_detection.Dish.sorted_scores">
+<code class="descname">sorted_scores</code><a class="headerlink" href="#aiy.vision.models.dish_detection.Dish.sorted_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.dish_detection.get_dishes">
+<code class="descclassname">aiy.vision.models.dish_detection.</code><code class="descname">get_dishes</code><span class="sig-paren">(</span><em>result</em>, <em>top_k=3</em>, <em>threshold=0.1</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.dish_detection.get_dishes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of Dish objects decoded from the inference result.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.dish_detection.model">
+<code class="descclassname">aiy.vision.models.dish_detection.</code><code class="descname">model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.dish_detection.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-aiy.vision.models.face_detection">
+<span id="aiy-vision-models-face-detection"></span><h2>aiy.vision.models.face_detection<a class="headerlink" href="#module-aiy.vision.models.face_detection" title="Permalink to this headline">¶</a></h2>
+<p>API for Face Detection.</p>
+<dl class="class">
+<dt id="aiy.vision.models.face_detection.Face">
+<em class="property">class </em><code class="descclassname">aiy.vision.models.face_detection.</code><code class="descname">Face</code><span class="sig-paren">(</span><em>face_score</em>, <em>joy_score</em>, <em>bounding_box</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.face_detection.Face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<dl class="attribute">
+<dt id="aiy.vision.models.face_detection.Face.bounding_box">
+<code class="descname">bounding_box</code><a class="headerlink" href="#aiy.vision.models.face_detection.Face.bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.vision.models.face_detection.Face.face_score">
+<code class="descname">face_score</code><a class="headerlink" href="#aiy.vision.models.face_detection.Face.face_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.vision.models.face_detection.Face.joy_score">
+<code class="descname">joy_score</code><a class="headerlink" href="#aiy.vision.models.face_detection.Face.joy_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.face_detection.get_faces">
+<code class="descclassname">aiy.vision.models.face_detection.</code><code class="descname">get_faces</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.face_detection.get_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of Face objects decoded from the inference result.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.face_detection.model">
+<code class="descclassname">aiy.vision.models.face_detection.</code><code class="descname">model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.face_detection.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-aiy.vision.models.image_classification">
+<span id="aiy-vision-models-image-classification"></span><h2>aiy.vision.models.image_classification<a class="headerlink" href="#module-aiy.vision.models.image_classification" title="Permalink to this headline">¶</a></h2>
+<p>API for Image Classification tasks.</p>
+<dl class="function">
+<dt id="aiy.vision.models.image_classification.get_classes">
+<code class="descclassname">aiy.vision.models.image_classification.</code><code class="descname">get_classes</code><span class="sig-paren">(</span><em>result</em>, <em>top_k=None</em>, <em>threshold=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.image_classification.get_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts image classification model output to list of detected objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>result</strong> – output tensor from image classification model.</li>
+<li><strong>top_k</strong> – int; max number of objects to return.</li>
+<li><strong>threshold</strong> – float; min probability of each returned object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>string, probability: float) pairs ordered by
+probability from highest to lowest. The number of pairs is not greater than
+top_k. Each probability is greater than threshold. For
+example:</p>
+<dl class="docutils">
+<dt>[(‘Egyptian cat’, 0.767578)</dt>
+<dd><p class="first last">(‘tiger cat, 0.163574)
+(‘lynx/catamount’, 0.039795)]</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">A list of (class_name</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.image_classification.get_classes_sparse">
+<code class="descclassname">aiy.vision.models.image_classification.</code><code class="descname">get_classes_sparse</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.image_classification.get_classes_sparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts sparse image classification model output to list of detected objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>result</strong> – sparse output tensor from image classification model.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string, probability: float) pairs ordered by
+probability from highest to lowest.
+For example:<dl class="docutils">
+<dt>[(‘Egyptian cat’, 0.767578)</dt>
+<dd>(‘tiger cat, 0.163574)</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">A list of (class_name</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.image_classification.model">
+<code class="descclassname">aiy.vision.models.image_classification.</code><code class="descname">model</code><span class="sig-paren">(</span><em>model_type='image_classification_mobilenet'</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.image_classification.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.image_classification.sparse_configs">
+<code class="descclassname">aiy.vision.models.image_classification.</code><code class="descname">sparse_configs</code><span class="sig-paren">(</span><em>top_k=1001</em>, <em>threshold=0.0</em>, <em>model_type='image_classification_mobilenet'</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.image_classification.sparse_configs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-aiy.vision.models.inaturalist_classification">
+<span id="aiy-vision-models-inaturalist-classification"></span><h2>aiy.vision.models.inaturalist_classification<a class="headerlink" href="#module-aiy.vision.models.inaturalist_classification" title="Permalink to this headline">¶</a></h2>
+<p>API for detecting plants, insects, and birds from the iNaturalist dataset.</p>
+<dl class="class">
+<dt id="aiy.vision.models.inaturalist_classification.Model">
+<em class="property">class </em><code class="descclassname">aiy.vision.models.inaturalist_classification.</code><code class="descname">Model</code><a class="headerlink" href="#aiy.vision.models.inaturalist_classification.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.vision.models.inaturalist_classification.Model" title="aiy.vision.models.inaturalist_classification.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.vision.models.inaturalist_classification.Model</span></code></a></p>
+<dl class="method">
+<dt id="aiy.vision.models.inaturalist_classification.Model.compute_graph">
+<code class="descname">compute_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.inaturalist_classification.Model.compute_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.vision.models.inaturalist_classification.Model.labels">
+<code class="descname">labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.inaturalist_classification.Model.labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.inaturalist_classification.get_classes">
+<code class="descclassname">aiy.vision.models.inaturalist_classification.</code><code class="descname">get_classes</code><span class="sig-paren">(</span><em>result</em>, <em>top_k=None</em>, <em>threshold=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.inaturalist_classification.get_classes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.inaturalist_classification.get_classes_sparse">
+<code class="descclassname">aiy.vision.models.inaturalist_classification.</code><code class="descname">get_classes_sparse</code><span class="sig-paren">(</span><em>result</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.inaturalist_classification.get_classes_sparse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.inaturalist_classification.model">
+<code class="descclassname">aiy.vision.models.inaturalist_classification.</code><code class="descname">model</code><span class="sig-paren">(</span><em>model_type</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.inaturalist_classification.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.inaturalist_classification.sparse_configs">
+<code class="descclassname">aiy.vision.models.inaturalist_classification.</code><code class="descname">sparse_configs</code><span class="sig-paren">(</span><em>model_type</em>, <em>top_k=None</em>, <em>threshold=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.inaturalist_classification.sparse_configs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-aiy.vision.models.object_detection">
+<span id="aiy-vision-models-object-detection"></span><h2>aiy.vision.models.object_detection<a class="headerlink" href="#module-aiy.vision.models.object_detection" title="Permalink to this headline">¶</a></h2>
+<p>API for Object Detection tasks.</p>
+<dl class="class">
+<dt id="aiy.vision.models.object_detection.Object">
+<em class="property">class </em><code class="descclassname">aiy.vision.models.object_detection.</code><code class="descname">Object</code><span class="sig-paren">(</span><em>bounding_box</em>, <em>kind</em>, <em>score</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.object_detection.Object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Object detection result.</p>
+<dl class="attribute">
+<dt id="aiy.vision.models.object_detection.Object.BACKGROUND">
+<code class="descname">BACKGROUND</code><em class="property"> = 0</em><a class="headerlink" href="#aiy.vision.models.object_detection.Object.BACKGROUND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.vision.models.object_detection.Object.CAT">
+<code class="descname">CAT</code><em class="property"> = 2</em><a class="headerlink" href="#aiy.vision.models.object_detection.Object.CAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.vision.models.object_detection.Object.DOG">
+<code class="descname">DOG</code><em class="property"> = 3</em><a class="headerlink" href="#aiy.vision.models.object_detection.Object.DOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.vision.models.object_detection.Object.PERSON">
+<code class="descname">PERSON</code><em class="property"> = 1</em><a class="headerlink" href="#aiy.vision.models.object_detection.Object.PERSON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.object_detection.get_objects">
+<code class="descclassname">aiy.vision.models.object_detection.</code><code class="descname">get_objects</code><span class="sig-paren">(</span><em>result</em>, <em>threshold=0.3</em>, <em>offset=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.object_detection.get_objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.object_detection.get_objects_sparse">
+<code class="descclassname">aiy.vision.models.object_detection.</code><code class="descname">get_objects_sparse</code><span class="sig-paren">(</span><em>result</em>, <em>offset=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.object_detection.get_objects_sparse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.object_detection.model">
+<code class="descclassname">aiy.vision.models.object_detection.</code><code class="descname">model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.object_detection.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.object_detection.sparse_configs">
+<code class="descclassname">aiy.vision.models.object_detection.</code><code class="descname">sparse_configs</code><span class="sig-paren">(</span><em>threshold=0.3</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.object_detection.sparse_configs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-aiy.vision.models.utils">
+<span id="aiy-vision-models-utils"></span><h2>aiy.vision.models.utils<a class="headerlink" href="#module-aiy.vision.models.utils" title="Permalink to this headline">¶</a></h2>
+<p>Set of reusable utilities to work with AIY models.</p>
+<dl class="function">
+<dt id="aiy.vision.models.utils.load_compute_graph">
+<code class="descclassname">aiy.vision.models.utils.</code><code class="descname">load_compute_graph</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.utils.load_compute_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.utils.load_labels">
+<code class="descclassname">aiy.vision.models.utils.</code><code class="descname">load_labels</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.utils.load_labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.utils.load_ssd_anchors">
+<code class="descclassname">aiy.vision.models.utils.</code><code class="descname">load_ssd_anchors</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.utils.load_ssd_anchors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.utils.reshape">
+<code class="descclassname">aiy.vision.models.utils.</code><code class="descname">reshape</code><span class="sig-paren">(</span><em>array</em>, <em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.utils.reshape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="aiy.vision.models.utils.shape_tuple">
+<code class="descclassname">aiy.vision.models.utils.</code><code class="descname">shape_tuple</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.vision.models.utils.shape_tuple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="voice.html" class="btn btn-neutral float-right" title="Voice Kit overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aiy.vision.inference.html" class="btn btn-neutral" title="aiy.vision.inference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

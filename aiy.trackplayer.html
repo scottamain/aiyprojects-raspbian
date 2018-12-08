@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.trackplayer &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiy.vision.annotator" href="aiy.vision.annotator.html" />
+    <link rel="prev" title="aiy.toneplayer" href="aiy.toneplayer.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.trackplayer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.trackplayer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-aiy.trackplayer">
+<span id="aiy-trackplayer"></span><h1>aiy.trackplayer<a class="headerlink" href="#module-aiy.trackplayer" title="Permalink to this headline">¶</a></h1>
+<p>A tracker-based music player for the piezo buzzer.</p>
+<p>This API is designed for the Vision Kit, but has no dependency on the Vision
+Bonnet, so may be used without it. It only requires a piezo buzzer connected to
+<a class="reference internal" href="aiy.pins.html#aiy.pins.aiy.pins.BUZZER_GPIO_PIN" title="aiy.pins.aiy.pins.BUZZER_GPIO_PIN"><code class="xref any py py-attr docutils literal notranslate"><span class="pre">aiy.pins.BUZZER_GPIO_PIN</span></code></a>.</p>
+<dl class="class">
+<dt id="aiy.trackplayer.Arpeggio">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">Arpeggio</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Arpeggio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Plays an arpeggiated chord.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.Arpeggio.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Arpeggio.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.Arpeggio.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Arpeggio.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.Command">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">Command</code><a class="headerlink" href="#aiy.trackplayer.Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for all commands.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.Command.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Command.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.Command.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Command.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.Glissando">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">Glissando</code><span class="sig-paren">(</span><em>direction</em>, <em>hz_per_tick</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Glissando" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Pitchbends a note up or down by the given rate.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.Glissando.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Glissando.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.Glissando.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Glissando.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.JumpToPosition">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">JumpToPosition</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.JumpToPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Jumps to the given position in a song.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.JumpToPosition.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.JumpToPosition.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.JumpToPosition.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.JumpToPosition.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.NoteOff">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">NoteOff</code><a class="headerlink" href="#aiy.trackplayer.NoteOff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Stops a given note from playing.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.NoteOff.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.NoteOff.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.NoteOff.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.NoteOff.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.PulseChange">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">PulseChange</code><span class="sig-paren">(</span><em>direction</em>, <em>usec_per_tick</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.PulseChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Changes the pulse width of a note up or down by the given rate.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.PulseChange.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.PulseChange.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.PulseChange.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.PulseChange.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.Retrigger">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">Retrigger</code><span class="sig-paren">(</span><em>times</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Retrigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Retriggers a note a consecutive number of times.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.Retrigger.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Retrigger.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.Retrigger.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Retrigger.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.SetPulseWidth">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">SetPulseWidth</code><span class="sig-paren">(</span><em>pulse_width_usec</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.SetPulseWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Changes the pulse width of a note up or down by the given rate.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.SetPulseWidth.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.SetPulseWidth.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.SetPulseWidth.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.SetPulseWidth.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.SetSpeed">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">SetSpeed</code><span class="sig-paren">(</span><em>speed</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.SetSpeed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Changes the speed of the given song.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.SetSpeed.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.SetSpeed.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.SetSpeed.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.SetSpeed.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.StopPlaying">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">StopPlaying</code><a class="headerlink" href="#aiy.trackplayer.StopPlaying" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Stops the TrackPlayer from playing.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.StopPlaying.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.StopPlaying.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.StopPlaying.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.StopPlaying.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.TrackLoader">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">TrackLoader</code><span class="sig-paren">(</span><em>gpio</em>, <em>filename</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Simple track module loader.</p>
+<p>This class, given a filename and a gpio will load and parse in the given
+track file and initialize a TrackPlayer instance to play it.</p>
+<p>The format of a track file is a plain text file consisting of a header,
+followed by a number of pattern definitions. Whitespace is ignored in the
+header and between the patterns.</p>
+<p>The header may contain a set of key value pairs like so:</p>
+<blockquote>
+<div>title Some arbitrary song name
+speed &lt;speed&gt;
+order &lt;number&gt; [&lt;number&gt;…]
+end</div></blockquote>
+<p>“title” specifies the title of the song. Optional. This isn’t actually used
+by the player, but is a nice bit of metadata for humans.</p>
+<p>“speed” sets the speed in ticks/row. Optional. The argument, &lt;speed&gt; must be
+an int. If this isn’t present, the player defaults to a speed of 3.</p>
+<p>“order” sets the order of the patterns. It is a single line of
+space separated integers, starting at 0. Each integer refers to the pattern
+in order in the file. This keyword must be present.</p>
+<p>The keyword “end”, which ends the header.</p>
+<p>Patterns take the form:</p>
+<blockquote>
+<div>pattern
+[E5] [cmnd [&lt;arg&gt;…] …]
+end</div></blockquote>
+<p>Patterns are started with the “pattern” keyword and end with the “end”
+keyword. Blank lines inside a pattern are significant – they add time to
+the song. Any notes that were played continue to play unless they were
+stopped.</p>
+<p>Each row of a pattern consists of a note followed by any number of commands
+and arguments. A note consists of an upper or lowercase letter A-G
+(lowercase are sharp notes) and an octave number between 1 and 8. Any time a
+note appears, it will play only on the first tick, augmented by any commands
+on the same row. Notes are optional per row.</p>
+<p>Commands are four letter lowercase words whose effect is applied every tick.
+A row may contain nothing but commands, if need be. If the current speed is
+3, that means each effect will occur 3 times per row. There may be any
+number of commands followed by arguments on the same row. Commands available
+as of this writing are as follows:</p>
+<blockquote>
+<div>glis &lt;direction&gt; &lt;amount-per-tick&gt;
+puls &lt;direction&gt; &lt;amount-per-tick&gt;
+spwd &lt;width&gt;
+arpg [&lt;note&gt;…]
+vibr &lt;depth&gt; &lt;speed&gt;
+retg &lt;times&gt;
+noff
+sspd &lt;speed&gt;
+jump &lt;position&gt;
+stop</div></blockquote>
+<p>glis is a glissando effect, which takes in a &lt;direction&gt; (a positive or
+negative number) as a direction to go in terms of frequency shift. The
+&lt;amount-per-tick&gt; value is an integer that is how much of a shift in Hz to
+apply in the given direction every tick.</p>
+<p>puls changes the pulse width of the current PWM waveform in the given
+&lt;direction&gt; by the &lt;amount-per-tick&gt; in microseconds. &lt;direction&gt; is like
+&lt;direction&gt; to the glis command.</p>
+<p>spwd sets the pulse width of the current PWM waveform directly. &lt;width&gt; is
+the width of the pulse in microseconds.</p>
+<p>arpg performs an arpeggio using the currently playing note and any number of
+notes listed as arguments. Each note is played sequentially, starting with
+the currently playing note, every tick. Note that to continue the arpeggio,
+it will be necessary to list multiple arpg commands in sequence.</p>
+<p>vibr performs a vibrato using the currently playing note. The vibrato is
+applied using the given &lt;depth&gt; in Hz, and the given &lt;speed&gt;.</p>
+<p>retg retriggers the note every tick the given number of &lt;times&gt;. This allows
+for very fast momentary effects when combined with glis, puls, and arpg and
+high speed values.</p>
+<p>noff stops any previously playing note.</p>
+<p>sspd sets the current playing speed in &lt;speed&gt; ticks per row.</p>
+<p>jump jumps to the given row &lt;position&gt; (offset from the start of the
+pattern) and continues playing.</p>
+<p>stop stops the Player from playing.</p>
+<dl class="attribute">
+<dt id="aiy.trackplayer.TrackLoader.COMMANDS">
+<code class="descname">COMMANDS</code><em class="property"> = {'arpg': &lt;class 'aiy.trackplayer.Arpeggio'&gt;, 'glis': &lt;class 'aiy.trackplayer.Glissando'&gt;, 'jump': &lt;class 'aiy.trackplayer.JumpToPosition'&gt;, 'noff': &lt;class 'aiy.trackplayer.NoteOff'&gt;, 'puls': &lt;class 'aiy.trackplayer.PulseChange'&gt;, 'retg': &lt;class 'aiy.trackplayer.Retrigger'&gt;, 'spwd': &lt;class 'aiy.trackplayer.SetPulseWidth'&gt;, 'sspd': &lt;class 'aiy.trackplayer.SetSpeed'&gt;, 'stop': &lt;class 'aiy.trackplayer.StopPlaying'&gt;, 'vibr': &lt;class 'aiy.trackplayer.Vibrato'&gt;}</em><a class="headerlink" href="#aiy.trackplayer.TrackLoader.COMMANDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.trackplayer.TrackLoader.COMMAND_RE">
+<code class="descname">COMMAND_RE</code><em class="property"> = re.compile('(?P&lt;name&gt;[a-z]{4})')</em><a class="headerlink" href="#aiy.trackplayer.TrackLoader.COMMAND_RE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.trackplayer.TrackLoader.NOTE_RE">
+<code class="descname">NOTE_RE</code><em class="property"> = re.compile('(?P&lt;name&gt;[A-Ga-g])(?P&lt;octave&gt;[1-8])')</em><a class="headerlink" href="#aiy.trackplayer.TrackLoader.NOTE_RE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.trackplayer.TrackLoader.load">
+<code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackLoader.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the track module from disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A fully initialized TrackPlayer instance, ready to play.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.TrackPlayer">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">TrackPlayer</code><span class="sig-paren">(</span><em>gpio</em>, <em>speed=3</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Plays a tracker-like song.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.TrackPlayer.add_order">
+<code class="descname">add_order</code><span class="sig-paren">(</span><em>pattern_number</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer.add_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a pattern index to the order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.trackplayer.TrackPlayer.add_pattern">
+<code class="descname">add_pattern</code><span class="sig-paren">(</span><em>pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer.add_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new pattern to the player.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The new pattern index.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.trackplayer.TrackPlayer.play">
+<code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer.play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays the currently configured track.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.trackplayer.TrackPlayer.set_order">
+<code class="descname">set_order</code><span class="sig-paren">(</span><em>position</em>, <em>pattern_number</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer.set_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes a pattern index in the order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.trackplayer.TrackPlayer.set_position">
+<code class="descname">set_position</code><span class="sig-paren">(</span><em>new_position</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer.set_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the position inside of the current pattern.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.trackplayer.TrackPlayer.set_speed">
+<code class="descname">set_speed</code><span class="sig-paren">(</span><em>new_speed</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer.set_speed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the playing speed in ticks/row.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.trackplayer.TrackPlayer.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.TrackPlayer.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops playing any currently playing track.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.trackplayer.Vibrato">
+<em class="property">class </em><code class="descclassname">aiy.trackplayer.</code><code class="descname">Vibrato</code><span class="sig-paren">(</span><em>depth_hz</em>, <em>speed</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Vibrato" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.trackplayer.Command" title="aiy.trackplayer.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.trackplayer.Command</span></code></a></p>
+<p>Vibrates the frequency by the given amount.</p>
+<dl class="method">
+<dt id="aiy.trackplayer.Vibrato.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>player</em>, <em>controller</em>, <em>note</em>, <em>tick_delta</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Vibrato.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the effect of this command.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="aiy.trackplayer.Vibrato.parse">
+<em class="property">classmethod </em><code class="descname">parse</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.trackplayer.Vibrato.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the arguments to this command into a new command instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple of an instance of this class and how many arguments were
+consumed from the argument list.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aiy.vision.annotator.html" class="btn btn-neutral float-right" title="aiy.vision.annotator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aiy.toneplayer.html" class="btn btn-neutral" title="aiy.toneplayer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.board &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiy.leds" href="aiy.leds.html" />
+    <link rel="prev" title="AIY Projects API reference" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.board</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.board.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-aiy.board">
+<span id="aiy-board"></span><h1>aiy.board<a class="headerlink" href="#module-aiy.board" title="Permalink to this headline">¶</a></h1>
+<p>APIs to use the button (and button LED) that’s attached to the Vision Bonnet
+and Voice Bonnet/HAT’s button connector. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiy.board</span> <span class="kn">import</span> <span class="n">Board</span><span class="p">,</span> <span class="n">Led</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;LED is ON while button is pressed (Ctrl-C for exit).&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">Board</span><span class="p">()</span> <span class="k">as</span> <span class="n">board</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">board</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">wait_for_press</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;ON&#39;</span><span class="p">)</span>
+            <span class="n">board</span><span class="o">.</span><span class="n">led</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">Led</span><span class="o">.</span><span class="n">ON</span>
+            <span class="n">board</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">wait_for_release</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;OFF&#39;</span><span class="p">)</span>
+            <span class="n">board</span><span class="o">.</span><span class="n">led</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">Led</span><span class="o">.</span><span class="n">OFF</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<span class="target" id="module-aiy.board"></span><dl class="class">
+<dt id="aiy.board.Board">
+<em class="property">class </em><code class="descclassname">aiy.board.</code><code class="descname">Board</code><span class="sig-paren">(</span><em>button_pin=23</em>, <em>led_pin=25</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="aiy.board.Board.button">
+<code class="descname">button</code><a class="headerlink" href="#aiy.board.Board.button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a <a class="reference internal" href="#aiy.board.Button" title="aiy.board.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">Button</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="aiy.board.Board.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Board.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Board.led">
+<code class="descname">led</code><a class="headerlink" href="#aiy.board.Board.led" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference internal" href="#aiy.board.Led" title="aiy.board.Led"><code class="xref py py-class docutils literal notranslate"><span class="pre">Led</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.board.Button">
+<em class="property">class </em><code class="descclassname">aiy.board.</code><code class="descname">Button</code><span class="sig-paren">(</span><em>channel</em>, <em>edge='falling'</em>, <em>pull_up_down='up'</em>, <em>debounce_time=0.08</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="aiy.board.Button.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.board.Button.wait_for_press">
+<code class="descname">wait_for_press</code><span class="sig-paren">(</span><em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button.wait_for_press" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.board.Button.wait_for_release">
+<code class="descname">wait_for_release</code><span class="sig-paren">(</span><em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button.wait_for_release" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Button.when_pressed">
+<code class="descname">when_pressed</code><a class="headerlink" href="#aiy.board.Button.when_pressed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Button.when_released">
+<code class="descname">when_released</code><a class="headerlink" href="#aiy.board.Button.when_released" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.board.Led">
+<em class="property">class </em><code class="descclassname">aiy.board.</code><code class="descname">Led</code><a class="headerlink" href="#aiy.board.Led" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Controls the LED in the button. Get an instance from <a class="reference internal" href="#aiy.board.Board.led" title="aiy.board.Board.led"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Board.led</span></code></a>.</p>
+<p>This class is primarily intended for compatibility with the Voice HAT
+(V1 Voice Kit), and it also works on the Voice/Vision Bonnet. However, if
+you’re using <em>only</em> the Voice/Vision Bonnet, then you should instead use
+<a class="reference internal" href="aiy.leds.html#module-aiy.leds" title="aiy.leds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aiy.leds</span></code></a>, which provides more controls for the button’s LEDs.</p>
+</div></blockquote>
+<dl class="method">
+<dt id="aiy.board.Led.brightness">
+<code class="descname">brightness</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Led.brightness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the button LED brightness</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The brighness, between 0.0 and 1.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.state">
+<code class="descname">state</code><a class="headerlink" href="#aiy.board.Led.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the button LED state. Can be one of the values below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.OFF">
+<code class="descname">OFF</code><a class="headerlink" href="#aiy.board.Led.OFF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.ON">
+<code class="descname">ON</code><a class="headerlink" href="#aiy.board.Led.ON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.BLINK">
+<code class="descname">BLINK</code><a class="headerlink" href="#aiy.board.Led.BLINK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.BLINK_3">
+<code class="descname">BLINK_3</code><a class="headerlink" href="#aiy.board.Led.BLINK_3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.BEACON">
+<code class="descname">BEACON</code><a class="headerlink" href="#aiy.board.Led.BEACON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.BEACON_DARK">
+<code class="descname">BEACON_DARK</code><a class="headerlink" href="#aiy.board.Led.BEACON_DARK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.DECAY">
+<code class="descname">DECAY</code><a class="headerlink" href="#aiy.board.Led.DECAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.PULSE_SLOW">
+<code class="descname">PULSE_SLOW</code><a class="headerlink" href="#aiy.board.Led.PULSE_SLOW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.board.Led.PULSE_QUICK">
+<code class="descname">PULSE_QUICK</code><a class="headerlink" href="#aiy.board.Led.PULSE_QUICK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aiy.leds.html" class="btn btn-neutral float-right" title="aiy.leds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="AIY Projects API reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

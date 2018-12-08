@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.toneplayer &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiy.trackplayer" href="aiy.trackplayer.html" />
+    <link rel="prev" title="Vision Kit overview" href="vision.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.toneplayer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.toneplayer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-aiy.toneplayer">
+<span id="aiy-toneplayer"></span><h1>aiy.toneplayer<a class="headerlink" href="#module-aiy.toneplayer" title="Permalink to this headline">¶</a></h1>
+<p>A simple melodic music player for the piezo buzzer.</p>
+<p>This API is designed for the Vision Kit, but has no dependency on the Vision
+Bonnet, so may be used without it. It only requires a piezo buzzer connected to
+<a class="reference internal" href="aiy.pins.html#aiy.pins.aiy.pins.BUZZER_GPIO_PIN" title="aiy.pins.aiy.pins.BUZZER_GPIO_PIN"><code class="xref any py py-attr docutils literal notranslate"><span class="pre">aiy.pins.BUZZER_GPIO_PIN</span></code></a>.</p>
+<dl class="class">
+<dt id="aiy.toneplayer.Note">
+<em class="property">class </em><code class="descclassname">aiy.toneplayer.</code><code class="descname">Note</code><span class="sig-paren">(</span><em>name</em>, <em>octave=4</em>, <em>bpm=120</em>, <em>period=4</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.toneplayer.Note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.toneplayer.Rest" title="aiy.toneplayer.Rest"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.toneplayer.Rest</span></code></a></p>
+<p>Simple internal class to represent a musical note.</p>
+<p>Used in part with the TonePlayer class, this object represents a musical
+note, including its name, octave, and how long it is played. End users
+shouldn’t have to care about this too much and instead focus on the music
+language described in the TonePlayer class.</p>
+<dl class="attribute">
+<dt id="aiy.toneplayer.Note.BASE_OCTAVE">
+<code class="descname">BASE_OCTAVE</code><em class="property"> = 4</em><a class="headerlink" href="#aiy.toneplayer.Note.BASE_OCTAVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.toneplayer.Note.to_frequency">
+<code class="descname">to_frequency</code><span class="sig-paren">(</span><em>tuning=440.0</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.toneplayer.Note.to_frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from a name and octave to a frequency in Hz.</p>
+<p>Uses the specified tuning.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tuning</strong> – the frequency of the natural A note, in Hz.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.toneplayer.Rest">
+<em class="property">class </em><code class="descclassname">aiy.toneplayer.</code><code class="descname">Rest</code><span class="sig-paren">(</span><em>bpm=120</em>, <em>period=4</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.toneplayer.Rest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Simple internal class to represent a musical rest note.</p>
+<p>Used in part with the TonePlayer class, this object represents a period of
+time in a song where no sound is made. End users shouldn’t have to care
+about this too much and instead focus on the music language described in the
+TonePlayer class.</p>
+<dl class="attribute">
+<dt id="aiy.toneplayer.Rest.EIGHTH">
+<code class="descname">EIGHTH</code><em class="property"> = 8</em><a class="headerlink" href="#aiy.toneplayer.Rest.EIGHTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.toneplayer.Rest.HALF">
+<code class="descname">HALF</code><em class="property"> = 2</em><a class="headerlink" href="#aiy.toneplayer.Rest.HALF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.toneplayer.Rest.QUARTER">
+<code class="descname">QUARTER</code><em class="property"> = 4</em><a class="headerlink" href="#aiy.toneplayer.Rest.QUARTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.toneplayer.Rest.SIXTEENTH">
+<code class="descname">SIXTEENTH</code><em class="property"> = 16</em><a class="headerlink" href="#aiy.toneplayer.Rest.SIXTEENTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.toneplayer.Rest.WHOLE">
+<code class="descname">WHOLE</code><em class="property"> = 1</em><a class="headerlink" href="#aiy.toneplayer.Rest.WHOLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.toneplayer.Rest.to_length_secs">
+<code class="descname">to_length_secs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.toneplayer.Rest.to_length_secs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts from musical notation to a period of time in seconds.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.toneplayer.TonePlayer">
+<em class="property">class </em><code class="descclassname">aiy.toneplayer.</code><code class="descname">TonePlayer</code><span class="sig-paren">(</span><em>gpio</em>, <em>bpm=120</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.toneplayer.TonePlayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class to play a simplified music notation via a PWMController.</p>
+<p>This class makes use of a very simple music notation to play simple musical
+tones out of a PWM controlled piezo buzzer.</p>
+<p>The language consists of notes and rests listed in an array. Rests are
+moments in the song when no sound is produced, and are written in this way:</p>
+<blockquote>
+<div>r&lt;length&gt;</div></blockquote>
+<p>The &lt;length&gt; may be one of the following five characters, or omitted:</p>
+<blockquote>
+<div><p>w: whole note
+h: half note
+q: quarter note (the default – if you don’t specify the length, we</p>
+<blockquote>
+<div>assume quarter)</div></blockquote>
+<p>e: eighth note
+s: sixteenth note</p>
+</div></blockquote>
+<p>So a half note rest would be written as “rh”. A quarter note rest could be
+written as “r” or “rq”.</p>
+<p>Notes are similar to rests, but take the following form:</p>
+<blockquote>
+<div>&lt;note_name&gt;&lt;octave&gt;&lt;length&gt;</div></blockquote>
+<p>&lt;note_names&gt; are written using the upper and lower case letters A-G and a-g.
+Uppercase letters are the natural notes, whereas lowercase letters are
+shifted up one semitone (sharp). Represented on a piano keyboard, the
+lowercase letters are the black keys. Thus, ‘C’ is the natural note C, whereas
+‘c’ is actually C#, the first black key to the right of the C key.</p>
+<p>The octave is optional, but is the numbers 1-8. If omitted, the TonePlayer
+assumes octave 4. Like the rests, the &lt;length&gt; may also be omitted and uses
+the same notation as the rest &lt;length&gt; parameter. If omitted, TonePlayer
+assumes a length of one quarter.</p>
+<p>With this in mind, a middle C whole note could be written “C3w”. Likewise, a
+C# quarter note in the 4th octave could be written as “c” or “c4q” or “cq”.</p>
+<dl class="attribute">
+<dt id="aiy.toneplayer.TonePlayer.NOTE_RE">
+<code class="descname">NOTE_RE</code><em class="property"> = re.compile('(?P&lt;name&gt;[A-Ga-g])(?P&lt;octave&gt;[1-8])?(?P&lt;length&gt;[whqes])?')</em><a class="headerlink" href="#aiy.toneplayer.TonePlayer.NOTE_RE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.toneplayer.TonePlayer.PERIOD_MAP">
+<code class="descname">PERIOD_MAP</code><em class="property"> = {'e': 8, 'h': 2, 'q': 4, 's': 16, 'w': 1}</em><a class="headerlink" href="#aiy.toneplayer.TonePlayer.PERIOD_MAP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.toneplayer.TonePlayer.REST_RE">
+<code class="descname">REST_RE</code><em class="property"> = re.compile('r(?P&lt;length&gt;[whqes])?')</em><a class="headerlink" href="#aiy.toneplayer.TonePlayer.REST_RE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="aiy.toneplayer.TonePlayer.play">
+<code class="descname">play</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.toneplayer.TonePlayer.play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays a sequence of notes out the piezo buzzer.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aiy.trackplayer.html" class="btn btn-neutral float-right" title="aiy.trackplayer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vision.html" class="btn btn-neutral" title="Vision Kit overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

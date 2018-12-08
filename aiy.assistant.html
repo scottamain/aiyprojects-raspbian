@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.assistant &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiy.cloudspeech" href="aiy.cloudspeech.html" />
+    <link rel="prev" title="Voice Kit overview" href="voice.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.assistant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.assistant.auth_helpers">aiy.assistant.auth_helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.assistant.grpc">aiy.assistant.grpc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-aiy.assistant.library">aiy.assistant.library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.assistant</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.assistant.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aiy-assistant">
+<h1>aiy.assistant<a class="headerlink" href="#aiy-assistant" title="Permalink to this headline">¶</a></h1>
+<p>A collection of modules that simplify interaction with the
+<a class="reference external" href="https://developers.google.com/assistant/sdk/">Google Assistant API</a>.</p>
+<p>These APIs are designed for the Voice Kit, but have no dependency on the Voice
+HAT/Bonnet specifically. However, they do require some type of sound card
+attached to the Raspberry Pi that can be detected by the ALSA subsystem.</p>
+<div class="section" id="module-aiy.assistant.auth_helpers">
+<span id="aiy-assistant-auth-helpers"></span><h2>aiy.assistant.auth_helpers<a class="headerlink" href="#module-aiy.assistant.auth_helpers" title="Permalink to this headline">¶</a></h2>
+<p>Auth helpers for Google Assistant API.</p>
+<dl class="function">
+<dt id="aiy.assistant.auth_helpers.get_assistant_credentials">
+<code class="descclassname">aiy.assistant.auth_helpers.</code><code class="descname">get_assistant_credentials</code><span class="sig-paren">(</span><em>credentials_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.auth_helpers.get_assistant_credentials" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-aiy.assistant.grpc">
+<span id="aiy-assistant-grpc"></span><h2>aiy.assistant.grpc<a class="headerlink" href="#module-aiy.assistant.grpc" title="Permalink to this headline">¶</a></h2>
+<p>An API to access the Google Assistant Service.</p>
+<dl class="class">
+<dt id="aiy.assistant.grpc.AssistantServiceClient">
+<em class="property">class </em><code class="descclassname">aiy.assistant.grpc.</code><code class="descname">AssistantServiceClient</code><span class="sig-paren">(</span><em>language_code='en-US'</em>, <em>volume_percentage=100</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.grpc.AssistantServiceClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="aiy.assistant.grpc.AssistantServiceClient.conversation">
+<code class="descname">conversation</code><span class="sig-paren">(</span><em>deadline=185</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.grpc.AssistantServiceClient.conversation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.assistant.grpc.AssistantServiceClient.volume_percentage">
+<code class="descname">volume_percentage</code><a class="headerlink" href="#aiy.assistant.grpc.AssistantServiceClient.volume_percentage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aiy.assistant.grpc.AssistantServiceClientWithLed">
+<em class="property">class </em><code class="descclassname">aiy.assistant.grpc.</code><code class="descname">AssistantServiceClientWithLed</code><span class="sig-paren">(</span><em>board</em>, <em>language_code='en-US'</em>, <em>volume_percentage=100</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.grpc.AssistantServiceClientWithLed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aiy.assistant.grpc.AssistantServiceClient" title="aiy.assistant.grpc.AssistantServiceClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.assistant.grpc.AssistantServiceClient</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-aiy.assistant.library">
+<span id="aiy-assistant-library"></span><h2>aiy.assistant.library<a class="headerlink" href="#module-aiy.assistant.library" title="Permalink to this headline">¶</a></h2>
+<p>Wrapper around google.assistant.library.</p>
+<p>Handles model and device registration.</p>
+<dl class="class">
+<dt id="aiy.assistant.library.Assistant">
+<em class="property">class </em><code class="descclassname">aiy.assistant.library.</code><code class="descname">Assistant</code><span class="sig-paren">(</span><em>credentials</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.library.Assistant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">google.assistant.library.assistant.Assistant</span></code></p>
+<p>Client for the Google Assistant Library.</p>
+<p>Similar to google.assistant.library.Assistant, but handles device
+registration.</p>
+<dl class="method">
+<dt id="aiy.assistant.library.Assistant.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.library.Assistant.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the Assistant, which includes listening for a hotword.</p>
+<p>Once <code class="xref py py-meth docutils literal notranslate"><span class="pre">start()</span></code> is
+called, the Assistant will begin processing data from the
+‘default’ ALSA audio source, listening for the hotword. This
+will also start other services provided by the Assistant, such
+as timers/alarms. This method can only be called once. Once
+called, the Assistant will continue to run until <code class="docutils literal notranslate"><span class="pre">__exit__</span></code>
+is called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A queue of events that notify of changes to the Assistant
+state.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">google.assistant.event.IterableEventQueue</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aiy.cloudspeech.html" class="btn btn-neutral float-right" title="aiy.cloudspeech" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="voice.html" class="btn btn-neutral" title="Voice Kit overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

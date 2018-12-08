@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Vision Kit overview &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiy.toneplayer" href="aiy.toneplayer.html" />
+    <link rel="prev" title="aiy.pins" href="aiy.pins.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.pins.html">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api-modules">API modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bonnet-hardware">Bonnet hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#drivers">Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pinout-40-pin-header">Pinout (40-pin header)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Vision Kit overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/vision.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vision-kit-overview">
+<span id="vision-kit-overview"></span><h1>Vision Kit overview<a class="headerlink" href="#vision-kit-overview" title="Permalink to this headline">¶</a></h1>
+<p><img src="_static/images/vision-kit.png" class="attempt-right" alt=""
+width="200"/></p>
+<p>The AIY Vision Kit is a do-it-yourself intelligent camera built with a
+Raspberry Pi and the Vision Bonnet.</p>
+<p>After you assemble the kit and run the included demos,
+you can extend the kit with your own software and hardware.</p>
+<p>Also see the <a class="reference external" href="https://aiyprojects.withgoogle.com/vision/">Vision Kit assembly guide</a>.</p>
+<div class="section" id="api-modules">
+<span id="api-modules"></span><h2>API modules<a class="headerlink" href="#api-modules" title="Permalink to this headline">¶</a></h2>
+<p>To execute ML models and perform other actions with the Vision Kit, the
+system image includes the <code class="docutils literal notranslate"><span class="pre">aiy</span></code> Python library with the following modules
+designed for the Vision Kit:</p>
+<ul class="simple">
+<li><a class="reference external" href="aiy.toneplayer.html"><code class="docutils literal notranslate"><span class="pre">aiy.toneplayer</span></code></a>:
+A simple melodic music player for the piezo buzzer.</li>
+<li><a class="reference external" href="aiy.trackplayer.html"><code class="docutils literal notranslate"><span class="pre">aiy.trackplayer</span></code></a>:
+A tracker-based music player for the piezo buzzer.</li>
+<li><a class="reference external" href="aiy.vision.annotator.html"><code class="docutils literal notranslate"><span class="pre">aiy.vision.annotator</span></code></a>:
+An annotation library that draws overlays on the Raspberry Pi’s camera preview.</li>
+<li><a class="reference external" href="aiy.vision.inference.html"><code class="docutils literal notranslate"><span class="pre">aiy.vision.inference</span></code></a>:
+An inference engine that communicates with the Vision Bonnet from the Raspberry
+Pi side.</li>
+<li><a class="reference external" href="aiy.vision.models.html"><code class="docutils literal notranslate"><span class="pre">aiy.vision.models</span></code></a>:
+A collection of modules that perform ML inferences with specific types of image
+classification and object detection models.</li>
+<li><a class="reference external" href="aiy.board.html"><code class="docutils literal notranslate"><span class="pre">aiy.board</span></code></a>:
+APIs to use the button that’s attached to the Vision Bonnet’s button connector.</li>
+<li><a class="reference external" href="aiy.leds.html"><code class="docutils literal notranslate"><span class="pre">aiy.leds</span></code></a>:
+APIs to control certain LEDs, such as the LEDs in the button and the privacy
+LED.</li>
+<li><a class="reference external" href="aiy.pins.html"><code class="docutils literal notranslate"><span class="pre">aiy.pins</span></code></a>:
+GPIO pin definitions for use with gpiozero APIs.</li>
+</ul>
+</div>
+<div class="section" id="bonnet-hardware">
+<span id="bonnet-hardware"></span><h2>Bonnet hardware<a class="headerlink" href="#bonnet-hardware" title="Permalink to this headline">¶</a></h2>
+<p>The Voice Kit includes the following Voice Bonnet hardware.</p>
+<ul class="simple">
+<li>SOC: Myriad 2450</li>
+<li>MCU: ATSAMD09D14 [I2C address: 0x51]</li>
+<li>LED Driver: KTD2027A [I2C address: 0x30]</li>
+<li>Crypto (optional): ATECC608A [I2C address: 0x60]</li>
+<li>IMU: BMI160</li>
+</ul>
+<div class="section" id="drivers">
+<span id="drivers"></span><h3>Drivers<a class="headerlink" href="#drivers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>MCU driver: <code class="docutils literal notranslate"><span class="pre">modinfo</span> <span class="pre">aiy-io-i2c</span></code></li>
+<li>MCU PWM driver: <code class="docutils literal notranslate"><span class="pre">modinfo</span> <span class="pre">pwm-aiy-io</span></code></li>
+<li>MCU GPIO driver: <code class="docutils literal notranslate"><span class="pre">modinfo</span> <span class="pre">gpio-aiy-io</span></code></li>
+<li>MCU ADC driver: <code class="docutils literal notranslate"><span class="pre">modinfo</span> <span class="pre">aiy-adc</span></code></li>
+<li>LED driver: <code class="docutils literal notranslate"><span class="pre">modinfo</span> <span class="pre">leds-ktd202x</span></code></li>
+<li>Software PWM driver for buzzer: <code class="docutils literal notranslate"><span class="pre">modinfo</span> <span class="pre">pwm-soft</span></code></li>
+<li>Myriad driver: <code class="docutils literal notranslate"><span class="pre">modinfo</span> <span class="pre">aiy-vision</span></code></li>
+</ul>
+<p>To reset MCU:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">bus</span><span class="o">/</span><span class="n">i2c</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="mi">1</span><span class="o">-</span><span class="mi">0051</span><span class="o">/</span><span class="n">reset</span>
+</pre></div>
+</div>
+<p>To get MCU status message (including firmware version) and last error code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">bus</span><span class="o">/</span><span class="n">i2c</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="mi">1</span><span class="o">-</span><span class="mi">0051</span><span class="o">/</span><span class="p">{</span><span class="n">status_message</span><span class="p">,</span><span class="n">error_code</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pinout-40-pin-header">
+<span id="pinout-40-pin-header"></span><h3>Pinout (40-pin header)<a class="headerlink" href="#pinout-40-pin-header" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                   <span class="mf">3.3</span><span class="n">V</span> <span class="o">--&gt;</span> <span class="mi">1</span>    <span class="mi">2</span> <span class="o">&lt;--</span> <span class="mi">5</span><span class="n">V</span>
+                <span class="n">I2C_SDA</span> <span class="o">--&gt;</span> <span class="mi">3</span>    <span class="mi">4</span> <span class="o">&lt;--</span> <span class="mi">5</span><span class="n">V</span>
+                <span class="n">I2C_SCL</span> <span class="o">--&gt;</span> <span class="mi">5</span>    <span class="mi">6</span> <span class="o">&lt;--</span> <span class="n">GND</span>
+                            <span class="mi">7</span>    <span class="mi">8</span>
+                    <span class="n">GND</span> <span class="o">--&gt;</span> <span class="mi">9</span>   <span class="mi">10</span>
+                            <span class="mi">11</span>  <span class="mi">12</span>
+                            <span class="mi">13</span>  <span class="mi">14</span> <span class="o">&lt;--</span> <span class="n">GND</span>
+  <span class="p">(</span><span class="n">GPIO_22</span><span class="p">)</span> <span class="n">BUZZER_GPIO</span> <span class="o">--&gt;</span> <span class="mi">15</span>  <span class="mi">16</span> <span class="o">&lt;--</span> <span class="n">BUTTON_GPIO</span> <span class="p">(</span><span class="n">GPIO_23</span><span class="p">)</span>
+                   <span class="mf">3.3</span><span class="n">V</span> <span class="o">--&gt;</span> <span class="mi">17</span>  <span class="mi">18</span>
+               <span class="n">SPI_MOSI</span> <span class="o">--&gt;</span> <span class="mi">19</span>  <span class="mi">20</span> <span class="o">&lt;--</span> <span class="n">GND</span>
+               <span class="n">SPI_MISO</span> <span class="o">--&gt;</span> <span class="mi">21</span>  <span class="mi">22</span>
+               <span class="n">SPI_SCLK</span> <span class="o">--&gt;</span> <span class="mi">23</span>  <span class="mi">24</span> <span class="o">&lt;--</span> <span class="n">SPI_CE_MRD</span>
+                    <span class="n">GND</span> <span class="o">--&gt;</span> <span class="mi">25</span>  <span class="mi">26</span>
+                 <span class="n">ID_SDA</span> <span class="o">--&gt;</span> <span class="mi">27</span>  <span class="mi">28</span> <span class="o">&lt;--</span> <span class="n">ID_SCL</span>
+                            <span class="mi">29</span>  <span class="mi">30</span> <span class="o">&lt;--</span> <span class="n">GND</span>
+          <span class="n">PI_TO_MRD_IRQ</span> <span class="o">--&gt;</span> <span class="mi">31</span>  <span class="mi">32</span>
+          <span class="n">MRD_TO_PI_IRQ</span> <span class="o">--&gt;</span> <span class="mi">33</span>  <span class="mi">34</span> <span class="o">&lt;--</span> <span class="n">GND</span>
+                            <span class="mi">35</span>  <span class="mi">36</span>
+             <span class="n">MRD_UNUSED</span> <span class="o">--&gt;</span> <span class="mi">37</span>  <span class="mi">38</span>
+                    <span class="n">GND</span> <span class="o">--&gt;</span> <span class="mi">39</span>  <span class="mi">40</span>
+</pre></div>
+</div>
+<p>Also see the <a class="reference external" href="https://pinout.xyz/pinout/aiy_vision_bonnet">Vision Bonnet on pinout.xyz</a>.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<span id="troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference external" href="https://aiyprojects.withgoogle.com/help#vision-kit">Vision Kit help</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aiy.toneplayer.html" class="btn btn-neutral float-right" title="aiy.toneplayer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aiy.pins.html" class="btn btn-neutral" title="aiy.pins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

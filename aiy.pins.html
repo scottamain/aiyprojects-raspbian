@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>aiy.pins &mdash; AIY Projects 2018-11-16 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Vision Kit overview" href="vision.html" />
+    <link rel="prev" title="aiy.leds" href="aiy.leds.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AIY Projects
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Common APIs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aiy.board.html">aiy.board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.leds.html">aiy.leds</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">aiy.pins</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vision Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.toneplayer.html">aiy.toneplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.trackplayer.html">aiy.trackplayer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.annotator.html">aiy.vision.annotator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.inference.html">aiy.vision.inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.vision.models.html">aiy.vision.models</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Voice Kit APIs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="voice.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.assistant.html">aiy.assistant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.cloudspeech.html">aiy.cloudspeech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.audio.html">aiy.voice.audio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aiy.voice.tts.html">aiy.voice.tts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIY Projects</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>aiy.pins</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/aiy.pins.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-aiy.pins">
+<span id="aiy-pins"></span><h1>aiy.pins<a class="headerlink" href="#module-aiy.pins" title="Permalink to this headline">¶</a></h1>
+<p>GPIO pin definitions for the Vision Bonnet and Voice Bonnet, for use with
+<a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/">gpiozero APIs</a>.
+These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit).</p>
+<p>For example, here’s how to create a <a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/api_output.html#gpiozero.Servo" title="(in Gpiozero v1.4.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gpiozero.Servo</span></code></a> with <code class="docutils literal notranslate"><span class="pre">PIN_B</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gpiozero</span> <span class="k">import</span> <span class="n">Servo</span>
+<span class="kn">from</span> <span class="nn">aiy.pins</span> <span class="k">import</span> <span class="n">PIN_B</span>
+
+<span class="c1"># Create a servo with the custom values to give the full dynamic range.</span>
+<span class="n">tuned_servo</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="n">PIN_B</span><span class="p">,</span> <span class="n">min_pulse_width</span><span class="o">=.</span><span class="mi">0005</span><span class="p">,</span> <span class="n">max_pulse_width</span><span class="o">=.</span><span class="mi">0019</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or here’s how to light up the board’s LED when you press the kit’s button:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gpiozero</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">gpiozero</span> <span class="kn">import</span> <span class="n">LED</span>
+<span class="kn">from</span> <span class="nn">aiy.pins</span> <span class="kn">import</span> <span class="n">BUTTON_GPIO_PIN</span>
+<span class="kn">from</span> <span class="nn">aiy.pins</span> <span class="kn">import</span> <span class="n">LED_1</span>
+
+<span class="c1"># Set up a gpiozero LED using the first onboard LED on the vision hat.</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">LED</span><span class="p">(</span><span class="n">LED_1</span><span class="p">)</span>
+<span class="c1"># Set up a gpiozero Button using the button included with the vision hat.</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">BUTTON_GPIO_PIN</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">button</span><span class="o">.</span><span class="n">is_pressed</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For more examples, see <a class="reference external" href="https://github.com/google/aiyprojects-raspbian/tree/aiyprojects/src/examples/gpiozero">src/examples/gpiozero/</a>.</p>
+<span class="target" id="module-aiy.pins"></span><dl class="attribute">
+<dt id="aiy.pins.aiy.pins.PIN_A">
+<code class="descclassname">aiy.pins.</code><code class="descname">PIN_A</code><a class="headerlink" href="#aiy.pins.aiy.pins.PIN_A" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.pins.aiy.pins.PIN_B">
+<code class="descclassname">aiy.pins.</code><code class="descname">PIN_B</code><a class="headerlink" href="#aiy.pins.aiy.pins.PIN_B" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.pins.aiy.pins.PIN_C">
+<code class="descclassname">aiy.pins.</code><code class="descname">PIN_C</code><a class="headerlink" href="#aiy.pins.aiy.pins.PIN_C" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.pins.aiy.pins.PIN_D">
+<code class="descclassname">aiy.pins.</code><code class="descname">PIN_D</code><a class="headerlink" href="#aiy.pins.aiy.pins.PIN_D" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.pins.aiy.pins.LED_1">
+<code class="descclassname">aiy.pins.</code><code class="descname">LED_1</code><a class="headerlink" href="#aiy.pins.aiy.pins.LED_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this with <a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/api_output.html#gpiozero.LED" title="(in Gpiozero v1.4.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gpiozero.LED</span></code></a> to control LED_1 on the Vision/Voice
+Bonnet.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.pins.aiy.pins.LED_2">
+<code class="descclassname">aiy.pins.</code><code class="descname">LED_2</code><a class="headerlink" href="#aiy.pins.aiy.pins.LED_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this with <a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/api_output.html#gpiozero.LED" title="(in Gpiozero v1.4.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gpiozero.LED</span></code></a> to control LED_2 on the Vision/Voice
+Bonnet.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.pins.aiy.pins.BUZZER_GPIO_PIN">
+<code class="descclassname">aiy.pins.</code><code class="descname">BUZZER_GPIO_PIN</code><a class="headerlink" href="#aiy.pins.aiy.pins.BUZZER_GPIO_PIN" title="Permalink to this definition">¶</a></dt>
+<dd><p>The pin on the Raspberry Pi where the Vision Kit’s piezo buzzer is connected
+(BCM 22). This should be used with <a class="reference internal" href="aiy.toneplayer.html#aiy.toneplayer.TonePlayer" title="aiy.toneplayer.TonePlayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.toneplayer.TonePlayer</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aiy.pins.aiy.pins.BUTTON_GPIO_PIN">
+<code class="descclassname">aiy.pins.</code><code class="descname">BUTTON_GPIO_PIN</code><a class="headerlink" href="#aiy.pins.aiy.pins.BUTTON_GPIO_PIN" title="Permalink to this definition">¶</a></dt>
+<dd><p>The pin on the Raspberry Pi where the Vision/Voice Kit’s button is connected
+(BCM 23). This should be used with <a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/api_input.html#gpiozero.Button" title="(in Gpiozero v1.4.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gpiozero.Button</span></code></a>.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vision.html" class="btn btn-neutral float-right" title="Vision Kit overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aiy.leds.html" class="btn btn-neutral" title="aiy.leds" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Google LLC
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
