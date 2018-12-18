@@ -168,8 +168,8 @@
   <div class="section" id="module-aiy.pins">
 <span id="aiy-pins"></span><h1>aiy.pins<a class="headerlink" href="#module-aiy.pins" title="Permalink to this headline">¶</a></h1>
 <p>GPIO pin definitions for the Vision Bonnet and Voice Bonnet, for use with
-<a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/">gpiozero APIs</a>.
-These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit).</p>
+<a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/">gpiozero APIs</a>.</p>
+<p>These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit).</p>
 <p>For example, here’s how to create a <a class="reference external" href="https://gpiozero.readthedocs.io/en/stable/api_output.html#gpiozero.Servo" title="(in Gpiozero v1.4.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gpiozero.Servo</span></code></a> with <code class="docutils literal notranslate"><span class="pre">PIN_B</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gpiozero</span> <span class="k">import</span> <span class="n">Servo</span>
 <span class="kn">from</span> <span class="nn">aiy.pins</span> <span class="k">import</span> <span class="n">PIN_B</span>
@@ -178,7 +178,7 @@ These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit)
 <span class="n">tuned_servo</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="n">PIN_B</span><span class="p">,</span> <span class="n">min_pulse_width</span><span class="o">=.</span><span class="mi">0005</span><span class="p">,</span> <span class="n">max_pulse_width</span><span class="o">=.</span><span class="mi">0019</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Or here’s how to light up the board’s LED when you press the kit’s button:</p>
+<p>Or here’s how to light up <code class="docutils literal notranslate"><span class="pre">LED_1</span></code> on the bonnet when you press the button:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gpiozero</span> <span class="kn">import</span> <span class="n">Button</span>
 <span class="kn">from</span> <span class="nn">gpiozero</span> <span class="kn">import</span> <span class="n">LED</span>
 <span class="kn">from</span> <span class="nn">aiy.pins</span> <span class="kn">import</span> <span class="n">BUTTON_GPIO_PIN</span>
@@ -197,6 +197,10 @@ These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit)
 </pre></div>
 </div>
 <p>For more examples, see <a class="reference external" href="https://github.com/google/aiyprojects-raspbian/tree/aiyprojects/src/examples/gpiozero">src/examples/gpiozero/</a>.</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="_images/bonnet-pins_2x.png"><img alt="_images/bonnet-pins_2x.png" src="_images/bonnet-pins_2x.png" style="width: 550px;" /></a>
+<p class="caption"><span class="caption-text"><strong>Figure 1.</strong> Pin and LED positions on the Vision and Voice Bonnet.</span></p>
+</div>
 <span class="target" id="module-aiy.pins"></span><dl class="attribute">
 <dt id="aiy.pins.aiy.pins.PIN_A">
 <code class="descclassname">aiy.pins.</code><code class="descname">PIN_A</code><a class="headerlink" href="#aiy.pins.aiy.pins.PIN_A" title="Permalink to this definition">¶</a></dt>

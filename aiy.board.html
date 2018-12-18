@@ -167,7 +167,8 @@
             
   <div class="section" id="module-aiy.board">
 <span id="aiy-board"></span><h1>aiy.board<a class="headerlink" href="#module-aiy.board" title="Permalink to this headline">¶</a></h1>
-<p>APIs to use the button (and button LED) that’s attached to the Vision Bonnet
+<p>Testing
+APIs to use the button (and button LED) that’s attached to the Vision Bonnet
 and Voice Bonnet/HAT’s button connector. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiy.board</span> <span class="kn">import</span> <span class="n">Board</span><span class="p">,</span> <span class="n">Led</span>
 
@@ -191,10 +192,12 @@ and Voice Bonnet/HAT’s button connector. For example:</p>
 <dt id="aiy.board.Board">
 <em class="property">class </em><code class="descclassname">aiy.board.</code><code class="descname">Board</code><span class="sig-paren">(</span><em>button_pin=23</em>, <em>led_pin=25</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Board" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>An interface for the connected AIY board.</p>
 <dl class="attribute">
 <dt id="aiy.board.Board.button">
 <code class="descname">button</code><a class="headerlink" href="#aiy.board.Board.button" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a <a class="reference internal" href="#aiy.board.Button" title="aiy.board.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">Button</span></code></a></p>
+<dd><p>Returns a <a class="reference internal" href="#aiy.board.Button" title="aiy.board.Button"><code class="xref py py-class docutils literal notranslate"><span class="pre">Button</span></code></a> representing the button connected to
+the button connector.</p>
 </dd></dl>
 
 <dl class="method">
@@ -205,7 +208,7 @@ and Voice Bonnet/HAT’s button connector. For example:</p>
 <dl class="attribute">
 <dt id="aiy.board.Board.led">
 <code class="descname">led</code><a class="headerlink" href="#aiy.board.Board.led" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an <a class="reference internal" href="#aiy.board.Led" title="aiy.board.Led"><code class="xref py py-class docutils literal notranslate"><span class="pre">Led</span></code></a></p>
+<dd><p>Returns an <a class="reference internal" href="#aiy.board.Led" title="aiy.board.Led"><code class="xref py py-class docutils literal notranslate"><span class="pre">Led</span></code></a> representing the LED in the button.</p>
 </dd></dl>
 
 </dd></dl>
@@ -214,6 +217,8 @@ and Voice Bonnet/HAT’s button connector. For example:</p>
 <dt id="aiy.board.Button">
 <em class="property">class </em><code class="descclassname">aiy.board.</code><code class="descname">Button</code><span class="sig-paren">(</span><em>channel</em>, <em>edge='falling'</em>, <em>pull_up_down='up'</em>, <em>debounce_time=0.08</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>An interface for the button connected to the AIY board’s
+button connector.</p>
 <dl class="method">
 <dt id="aiy.board.Button.close">
 <code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button.close" title="Permalink to this definition">¶</a></dt>
@@ -222,22 +227,44 @@ and Voice Bonnet/HAT’s button connector. For example:</p>
 <dl class="method">
 <dt id="aiy.board.Button.wait_for_press">
 <code class="descname">wait_for_press</code><span class="sig-paren">(</span><em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button.wait_for_press" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Pauses the script until the button is pressed or the timeout is reached.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Seconds to wait before proceeding. By default, this is <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+which means wait indefinitely.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="aiy.board.Button.wait_for_release">
 <code class="descname">wait_for_release</code><span class="sig-paren">(</span><em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.board.Button.wait_for_release" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Pauses the script until the button is released or the timeout is reached.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Seconds to wait before proceeding. By default, this is <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+which means wait indefinitely.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="aiy.board.Button.when_pressed">
 <code class="descname">when_pressed</code><a class="headerlink" href="#aiy.board.Button.when_pressed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>A function to run when the button is pressed.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="aiy.board.Button.when_released">
 <code class="descname">when_released</code><a class="headerlink" href="#aiy.board.Button.when_released" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>A function to run when the button is released.</p>
+</dd></dl>
 
 </dd></dl>
 

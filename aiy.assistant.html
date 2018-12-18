@@ -209,6 +209,17 @@ attached to the Raspberry Pi that can be detected by the ALSA subsystem.</p>
 <dt id="aiy.assistant.grpc.AssistantServiceClientWithLed">
 <em class="property">class </em><code class="descclassname">aiy.assistant.grpc.</code><code class="descname">AssistantServiceClientWithLed</code><span class="sig-paren">(</span><em>board</em>, <em>language_code='en-US'</em>, <em>volume_percentage=100</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.grpc.AssistantServiceClientWithLed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#aiy.assistant.grpc.AssistantServiceClient" title="aiy.assistant.grpc.AssistantServiceClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.assistant.grpc.AssistantServiceClient</span></code></a></p>
+<p>Same API as <a class="reference internal" href="#aiy.assistant.grpc.AssistantServiceClient" title="aiy.assistant.grpc.AssistantServiceClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssistantServiceClient</span></code></a> but it also turns the
+Voice Kit’s button LED on and off in response to the conversation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Inherited-members:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -220,9 +231,15 @@ attached to the Raspberry Pi that can be detected by the ALSA subsystem.</p>
 <dt id="aiy.assistant.library.Assistant">
 <em class="property">class </em><code class="descclassname">aiy.assistant.library.</code><code class="descname">Assistant</code><span class="sig-paren">(</span><em>credentials</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.library.Assistant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">google.assistant.library.assistant.Assistant</span></code></p>
-<p>Client for the Google Assistant Library.</p>
-<p>Similar to google.assistant.library.Assistant, but handles device
-registration.</p>
+<p>Client for the Google Assistant Library. Provides basic control
+functionality and lifecycle handling for the Google Assistant.</p>
+<p>This is a wrapper for <code class="docutils literal notranslate"><span class="pre">google.assistant.library.Assistant</span></code>
+that handles device registration based on the project name in your
+<cite>assistant.json</cite> file.</p>
+<p>All other APIs from <code class="docutils literal notranslate"><span class="pre">google.assistant.library.Assistant</span></code>
+are available through this class, such as <code class="docutils literal notranslate"><span class="pre">start_conversation()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">stop_conversation()</span></code>, but they are not documented here. So for more API
+details, refer to the <a class="reference external" href="https://developers.google.com/assistant/sdk/reference/library/python/">Google Assistant Library for Python documentation</a>.</p>
 <dl class="method">
 <dt id="aiy.assistant.library.Assistant.start">
 <code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.assistant.library.Assistant.start" title="Permalink to this definition">¶</a></dt>

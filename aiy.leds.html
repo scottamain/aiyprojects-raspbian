@@ -167,16 +167,33 @@
             
   <div class="section" id="module-aiy.leds">
 <span id="aiy-leds"></span><h1>aiy.leds<a class="headerlink" href="#module-aiy.leds" title="Permalink to this headline">¶</a></h1>
-<p>APIs to control certain LEDs connected to the Vision/Voice Bonnet:
-the RGB LED in the button and the privacy LED in the Vision Kit.
-These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit).</p>
-<p>For examples, see <a class="reference external" href="https://github.com/google/aiyprojects-raspbian/blob/aiyprojects/src/examples/leds_example.py">leds_example.py</a>.</p>
-<p>To control LEDs attached to the bonnet’s GPIO pins or those on the Vision/Voice
-Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#module-aiy.pins" title="aiy.pins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aiy.pins</span></code></a>.</p>
+<p>APIs to control the RGB LED in the button that connects to the
+Vision/Voice Bonnet, and the privacy LED with the Vision Kit.</p>
+<p>These APIs are <strong>not compatible</strong> with the Voice HAT (V1 Voice Kit).
+To control the Voice HAT’s button LED, instead use <a class="reference internal" href="aiy.board.html#aiy.board.Led" title="aiy.board.Led"><code class="xref py py-class docutils literal notranslate"><span class="pre">aiy.board.Led</span></code></a>.</p>
+<p>For example, here’s how to blink the button’s red light:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">aiy.leds</span> <span class="k">import</span> <span class="n">Leds</span><span class="p">,</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Leds</span><span class="p">()</span> <span class="k">as</span> <span class="n">leds</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">rgb_on</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">))</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">rgb_off</span><span class="p">())</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For more examples, see <a class="reference external" href="https://github.com/google/aiyprojects-raspbian/blob/aiyprojects/src/examples/leds_example.py">leds_example.py</a>.</p>
+<p>These APIs are only for the RGB LED in the button and the Vision Kit’s privacy LED.
+To control LEDs you’ve attached to the bonnet’s GPIO pins or the LEDs named
+<code class="docutils literal notranslate"><span class="pre">LED_1</span></code> and <code class="docutils literal notranslate"><span class="pre">LED_2</span></code> on the Vision/Voice Bonnet, instead use
+<a class="reference internal" href="aiy.pins.html#module-aiy.pins" title="aiy.pins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aiy.pins</span></code></a>.</p>
 <dl class="class">
 <dt id="aiy.leds.Color">
 <em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">Color</code><a class="headerlink" href="#aiy.leds.Color" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Defines colors as RGB tuples that can be used as color values with
+<a class="reference internal" href="#aiy.leds.Leds" title="aiy.leds.Leds"><code class="xref py py-class docutils literal notranslate"><span class="pre">Leds</span></code></a>.</p>
 <dl class="attribute">
 <dt id="aiy.leds.Color.BLACK">
 <code class="descname">BLACK</code><em class="property"> = (0, 0, 0)</em><a class="headerlink" href="#aiy.leds.Color.BLACK" title="Permalink to this definition">¶</a></dt>
@@ -220,7 +237,28 @@ Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#modu
 <dl class="staticmethod">
 <dt id="aiy.leds.Color.blend">
 <em class="property">static </em><code class="descname">blend</code><span class="sig-paren">(</span><em>color_a</em>, <em>color_b</em>, <em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Color.blend" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a color that is a blend between two colors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>color_a</strong> – One of two colors to blend.</li>
+<li><strong>color_b</strong> – One of two colors to blend.</li>
+<li><strong>alpha</strong> – The alpha blend to apply between <code class="docutils literal notranslate"><span class="pre">color_a</span></code> and
+<code class="docutils literal notranslate"><span class="pre">color_b</span></code>, from 0.0 to 1.0, respectively. That is,
+0.0 makes <code class="docutils literal notranslate"><span class="pre">color_a</span></code> transparent so only <code class="docutils literal notranslate"><span class="pre">color_b</span></code> is
+visible; 0.5 blends the two colors evenly; 1.0 makes
+<code class="docutils literal notranslate"><span class="pre">color_b</span></code> transparent so  only <code class="docutils literal notranslate"><span class="pre">color_a</span></code> is visible.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An RGB tuple.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -228,12 +266,29 @@ Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#modu
 <dt id="aiy.leds.Leds">
 <em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">Leds</code><span class="sig-paren">(</span><em>reset=True</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class to control KTD LED driver chip.</p>
+<p>Class to control the KTD LED driver chip in the button used with the
+Vision and Voice Bonnet.</p>
 <dl class="class">
 <dt id="aiy.leds.Leds.Channel">
 <em class="property">class </em><code class="descname">Channel</code><span class="sig-paren">(</span><em>state</em>, <em>brightness</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.Channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Configuration of each channel on KTD LED driver.</p>
+<p>Defines the configuration for each channel in the KTD LED driver.</p>
+<p>You should not instantiate this class directly; instead create a
+dictionary of <code class="docutils literal notranslate"><span class="pre">Channel</span></code> objects with the other methods below,
+which you can then pass to <a class="reference internal" href="#aiy.leds.Leds.update" title="aiy.leds.Leds.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>state</strong> – Either <a class="reference internal" href="#aiy.leds.Leds.Channel.ON" title="aiy.leds.Leds.Channel.ON"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ON</span></code></a>, <a class="reference internal" href="#aiy.leds.Leds.Channel.OFF" title="aiy.leds.Leds.Channel.OFF"><code class="xref py py-attr docutils literal notranslate"><span class="pre">OFF</span></code></a>, or
+<a class="reference internal" href="#aiy.leds.Leds.Channel.PATTERN" title="aiy.leds.Leds.Channel.PATTERN"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PATTERN</span></code></a>.</li>
+<li><strong>brightness</strong> – A value between 0 and 255.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="aiy.leds.Leds.Channel.OFF">
 <code class="descname">OFF</code><em class="property"> = 0</em><a class="headerlink" href="#aiy.leds.Leds.Channel.OFF" title="Permalink to this definition">¶</a></dt>
@@ -254,59 +309,201 @@ Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#modu
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.installed">
 <em class="property">static </em><code class="descname">installed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.installed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Internal method to verify the <code class="docutils literal notranslate"><span class="pre">Leds</span></code> class is available.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="aiy.leds.Leds.pattern">
 <code class="descname">pattern</code><a class="headerlink" href="#aiy.leds.Leds.pattern" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Defines a blink pattern for the button’s LED. Must be set with a
+<a class="reference internal" href="#aiy.leds.Pattern" title="aiy.leds.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a> object. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Leds</span><span class="p">()</span> <span class="k">as</span> <span class="n">leds</span><span class="p">:</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">blink</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">rgb_pattern</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.privacy">
 <em class="property">static </em><code class="descname">privacy</code><span class="sig-paren">(</span><em>enabled</em>, <em>brightness=255</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.privacy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns configuration for channel 4 (privacy).</p>
+<dd><p>Creates a configuration for the privacy LED (channel 4).</p>
+<p>You can instead use <a class="reference internal" href="#aiy.leds.Leds.privacy_on" title="aiy.leds.Leds.privacy_on"><code class="xref py py-meth docutils literal notranslate"><span class="pre">privacy_on()</span></code></a> and <a class="reference internal" href="#aiy.leds.Leds.privacy_off" title="aiy.leds.Leds.privacy_off"><code class="xref py py-meth docutils literal notranslate"><span class="pre">privacy_off()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enabled</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> to turn on the light; <code class="docutils literal notranslate"><span class="pre">False</span></code> to turn it off.</li>
+<li><strong>brightness</strong> – A value from 0 to 255.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary with one <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> for the privacy LED
+(channel 4).</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.privacy_off">
 <em class="property">static </em><code class="descname">privacy_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.privacy_off" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates an “off” configuration for the privacy LED
+(the front LED on the Vision Kit).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dictionary with one <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> for the privacy LED
+(channel 4).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.privacy_on">
 <em class="property">static </em><code class="descname">privacy_on</code><span class="sig-paren">(</span><em>brightness=255</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.privacy_on" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates an “on” configuration for the privacy LED
+(the front LED on the Vision Kit).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>brightness</strong> – A value from 0 to 255.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary with one <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> for the privacy LED
+(channel 4).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="aiy.leds.Leds.reset">
 <code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.reset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Resets the LED driver to a clean state.</p>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.rgb">
 <em class="property">static </em><code class="descname">rgb</code><span class="sig-paren">(</span><em>state</em>, <em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns configuration for channels: 1 (red), 2 (green), 3 (blue).</p>
+<dd><p>Creates a configuration for the RGB channels: 1 (red), 2 (green), 3 (blue).</p>
+<p>Generally, you should instead use convenience constructors such as
+<a class="reference internal" href="#aiy.leds.Leds.rgb_on" title="aiy.leds.Leds.rgb_on"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgb_on()</span></code></a> and <a class="reference internal" href="#aiy.leds.Leds.rgb_pattern" title="aiy.leds.Leds.rgb_pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgb_pattern()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>state</strong> – Either <a class="reference internal" href="#aiy.leds.Leds.Channel.ON" title="aiy.leds.Leds.Channel.ON"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Channel.ON</span></code></a>, <a class="reference internal" href="#aiy.leds.Leds.Channel.OFF" title="aiy.leds.Leds.Channel.OFF"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Channel.OFF</span></code></a>, or
+<a class="reference internal" href="#aiy.leds.Leds.Channel.PATTERN" title="aiy.leds.Leds.Channel.PATTERN"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Channel.PATTERN</span></code></a>.</li>
+<li><strong>rgb</strong> – Either one of the <a class="reference internal" href="#aiy.leds.Color" title="aiy.leds.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">Color</span></code></a> constants or your own tuple
+of RGB values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary of 3 <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> objects, representing red, green,
+and blue values.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.rgb_off">
 <em class="property">static </em><code class="descname">rgb_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb_off" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates an “off” configuration for the button’s RGB LED.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of 3 <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> objects, representing red,
+green, and blue values, all turned off.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.rgb_on">
 <em class="property">static </em><code class="descname">rgb_on</code><span class="sig-paren">(</span><em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb_on" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates an “on” configuration for the button’s RGB LED.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rgb</strong> – Either one of the <a class="reference internal" href="#aiy.leds.Color" title="aiy.leds.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">Color</span></code></a> constants or your own tuple
+of RGB values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of 3 <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> objects, representing red,
+green, and blue values.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Leds.rgb_pattern">
 <em class="property">static </em><code class="descname">rgb_pattern</code><span class="sig-paren">(</span><em>rgb</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.rgb_pattern" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a “pattern” configuration for the button’s RGB LED, using
+the light pattern set with <a class="reference internal" href="#aiy.leds.Leds.pattern" title="aiy.leds.Leds.pattern"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pattern</span></code></a> and the color set here.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Leds</span><span class="p">()</span> <span class="k">as</span> <span class="n">leds</span><span class="p">:</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">blink</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">rgb_pattern</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rgb</strong> – Either one of the <a class="reference internal" href="#aiy.leds.Color" title="aiy.leds.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">Color</span></code></a> constants or your own tuple
+of RGB values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of 3 <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> objects, representing red,
+green, and blue values.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="aiy.leds.Leds.update">
 <code class="descname">update</code><span class="sig-paren">(</span><em>channels</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Leds.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Changes the state of an LED. Takes a dictionary of LED channel
+configurations, provided by various methods such as
+<a class="reference internal" href="#aiy.leds.Leds.rgb_on" title="aiy.leds.Leds.rgb_on"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rgb_on()</span></code></a>, <a class="reference internal" href="#aiy.leds.Leds.rgb_off" title="aiy.leds.Leds.rgb_off"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rgb_off()</span></code></a>, and <a class="reference internal" href="#aiy.leds.Leds.rgb_pattern" title="aiy.leds.Leds.rgb_pattern"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rgb_pattern()</span></code></a>.</p>
+<p>For example, turn on the red light:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Leds</span><span class="p">()</span> <span class="k">as</span> <span class="n">leds</span><span class="p">:</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">rgb_on</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">))</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">rgb_off</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Or turn on the privacy LED (Vision Kit only):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Leds</span><span class="p">()</span> <span class="k">as</span> <span class="n">leds</span><span class="p">:</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">privacy_on</span><span class="p">())</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">leds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Leds</span><span class="o">.</span><span class="n">privacy_off</span><span class="p">())</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channels</strong> – A dictionary of one or more <a class="reference internal" href="#aiy.leds.Leds.Channel" title="aiy.leds.Leds.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a> objects.
+Use the <code class="docutils literal notranslate"><span class="pre">rgb_</span></code> and <code class="docutils literal notranslate"><span class="pre">privacy_</span></code> methods to create a
+dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -314,16 +511,58 @@ Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#modu
 <dt id="aiy.leds.Pattern">
 <em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">Pattern</code><span class="sig-paren">(</span><em>period_ms</em>, <em>on_percent=0.5</em>, <em>rise_ms=0</em>, <em>fall_ms=0</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Pattern" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class to define blinking pattern.</p>
+<p>Defines an LED blinking pattern. Pass an instance of this to
+<a class="reference internal" href="#aiy.leds.Leds.pattern" title="aiy.leds.Leds.pattern"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Leds.pattern</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>period_ms</strong> – The period of time (in milliseconds) for each on/off
+sequence</li>
+<li><strong>on_percent</strong> – Percent of time during the period to turn on the LED
+(the LED turns on at the end of the period)</li>
+<li><strong>rise_ms</strong> – Duration of time to fade the light on</li>
+<li><strong>fall_ms</strong> – Duration of time to fade the light off</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="staticmethod">
 <dt id="aiy.leds.Pattern.blink">
 <em class="property">static </em><code class="descname">blink</code><span class="sig-paren">(</span><em>period_ms</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Pattern.blink" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Convenience method to create a blinking pattern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period_ms</strong> – The period of time (in milliseconds) for each on/off
+sequence.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A <a class="reference internal" href="#aiy.leds.Pattern" title="aiy.leds.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="aiy.leds.Pattern.breathe">
 <em class="property">static </em><code class="descname">breathe</code><span class="sig-paren">(</span><em>period_ms</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.Pattern.breathe" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Convenience method to create a breathing pattern (a blink that fades
+in and out).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period_ms</strong> – The period of time (in milliseconds) for each on/off
+sequence.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A <a class="reference internal" href="#aiy.leds.Pattern" title="aiy.leds.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -332,6 +571,26 @@ Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#modu
 <em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">PrivacyLed</code><span class="sig-paren">(</span><em>leds</em>, <em>brightness=32</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.PrivacyLed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Helper class to turn Privacy LED off automatically.</p>
+<p>When instantiated, the privacy LED turns on. It turns off whenever
+this object is destroyed (such as when the code exits the scope in which
+this was created). For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Turn the privacy LED on for 2 seconds</span>
+<span class="k">with</span> <span class="n">PrivacyLed</span><span class="p">(</span><span class="n">Leds</span><span class="p">()):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>leds</strong> – An instance of <a class="reference internal" href="#aiy.leds.Leds" title="aiy.leds.Leds"><code class="xref py py-class docutils literal notranslate"><span class="pre">Leds</span></code></a>.</li>
+<li><strong>brightness</strong> – A value between 0 and 255.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="class">
@@ -339,6 +598,28 @@ Bonnet board, instead use <a class="reference internal" href="aiy.pins.html#modu
 <em class="property">class </em><code class="descclassname">aiy.leds.</code><code class="descname">RgbLeds</code><span class="sig-paren">(</span><em>leds</em>, <em>channels</em><span class="sig-paren">)</span><a class="headerlink" href="#aiy.leds.RgbLeds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Helper class to turn RGB LEDs off automatically.</p>
+<p>When instantiated, the privacy LED turns on. It turns off whenever
+this object is destroyed (such as when the code exits the scope in which
+this was created). For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Turn on the green LED for 2 seconds</span>
+<span class="k">with</span> <span class="n">RgbLeds</span><span class="p">(</span><span class="n">Leds</span><span class="p">(),</span> <span class="n">Leds</span><span class="o">.</span><span class="n">rgb_on</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>leds</strong> – An instance of <a class="reference internal" href="#aiy.leds.Leds" title="aiy.leds.Leds"><code class="xref py py-class docutils literal notranslate"><span class="pre">Leds</span></code></a>.</li>
+<li><strong>channels</strong> – A dictionary of one or more <code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code> objects.
+Use the <code class="docutils literal notranslate"><span class="pre">Leds.rgb_</span></code> and <code class="docutils literal notranslate"><span class="pre">Leds.privacy_</span></code> methods to create a
+dictionary.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
