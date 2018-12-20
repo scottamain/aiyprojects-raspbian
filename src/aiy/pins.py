@@ -1,6 +1,7 @@
 """
 GPIO pin definitions for the Vision Bonnet and Voice Bonnet, for use with
 `gpiozero APIs <https://gpiozero.readthedocs.io/en/stable/>`_.
+
 These APIs are **not compatible** with the Voice HAT (V1 Voice Kit).
 
 For example, here's how to create a :class:`gpiozero.Servo` with ``PIN_B``::
@@ -11,7 +12,7 @@ For example, here's how to create a :class:`gpiozero.Servo` with ``PIN_B``::
     # Create a servo with the custom values to give the full dynamic range.
     tuned_servo = Servo(PIN_B, min_pulse_width=.0005, max_pulse_width=.0019)
 
-Or here's how to light up the board's LED when you press the kit's button:
+Or here's how to light up ``LED_1`` on the bonnet when you press the button:
 
 .. literalinclude:: ../src/examples/gpiozero/simple_button_example.py
    :language: python
@@ -19,6 +20,12 @@ Or here's how to light up the board's LED when you press the kit's button:
 
 For more examples, see `src/examples/gpiozero/
 <https://github.com/google/aiyprojects-raspbian/tree/aiyprojects/src/examples/gpiozero>`_.
+
+.. figure:: _static/images/bonnet-pins_2x.png
+   :width: 550px
+
+   **Figure 1.** Pin and LED positions on the Vision and Voice Bonnet.
+
 
 .. py:module:: aiy.pins
 
@@ -69,44 +76,7 @@ from gpiozero.exc import PinSetInput
 from gpiozero.exc import PinUnsupported
 from gpiozero.threads import GPIOThread
 
-
-def _detect_gpio_offset(module_path):
-    for folder in listdir(module_path):
-        try:
-            with open('%s/%s/base' % (module_path, folder), 'r') as offset:
-                return int(offset.read())
-        except IOError:
-            pass
-    return None
-
-VISIONBONNET_PRODUCT = r"AIY VisionBonnet"
-VOICEBONNET_PROUDCT = r"AIY VoiceBonnet"
-
-MCU_I2C_ADDRESS_DICT = {
-    VISIONBONNET_PRODUCT: 0x51,
-    VOICEBONNET_PROUDCT: 0x52
-}
-
-HAT_PRODUCT_NAME_PATH = "/sys/firmware/devicetree/base/hat/product"
-
-
-def _get_product_name():
-    if not os.path.exists(HAT_PRODUCT_NAME_PATH):
-        raise IOError('Hat not found.')
-    with open(HAT_PRODUCT_NAME_PATH, "r") as f:
-        hat_product_name = str(f.read()).strip("\x00").strip()
-    return hat_product_name
-
-
-def _get_i2c_address():
-    mcu_i2c_address = MCU_I2C_ADDRESS_DICT.get(_get_product_name())
-    if mcu_i2c_address is None:
-        raise ValueError('I2C address undetermined.')
-    return mcu_i2c_address
-
-
-_MODULE_PATH = '/sys/bus/i2c/drivers/aiy-io-i2c/1-00%2X/gpio-aiy-io/gpio' % _get_i2c_address()
-_PIN_OFFSET = _detect_gpio_offset(_MODULE_PATH)
+PIN_OFFSET = 497  # 497 = 512 (total gpio count) - 15 (our gpio count).
 
 class GpioSpec(namedtuple('GpioSpec', ['base', 'offset', 'name', 'active_low'])):
     @property
@@ -121,12 +91,12 @@ PwmSpec.__str__ = lambda self: 'pwm %d' % self.pin
 
 AIYPinSpec = namedtuple('AIYPinSpec', ['gpio_spec', 'pwm_spec'])
 
-PIN_A = AIYPinSpec(GpioSpec(_PIN_OFFSET, 2, 'AIY_USER0', active_low=False), PwmSpec(0, 'pwm0'))
-PIN_B = AIYPinSpec(GpioSpec(_PIN_OFFSET, 3, 'AIY_USER1', active_low=False), PwmSpec(1, 'pwm1'))
-PIN_C = AIYPinSpec(GpioSpec(_PIN_OFFSET, 8, 'AIY_USER2', active_low=False), PwmSpec(2, 'pwm2'))
-PIN_D = AIYPinSpec(GpioSpec(_PIN_OFFSET, 9, 'AIY_USER3', active_low=False), PwmSpec(3, 'pwm3'))
-LED_1 = AIYPinSpec(GpioSpec(_PIN_OFFSET, 13, 'AIY_LED0', active_low=True), None)
-LED_2 = AIYPinSpec(GpioSpec(_PIN_OFFSET, 14, 'AIY_LED1', active_low=True), None)
+PIN_A = AIYPinSpec(GpioSpec(PIN_OFFSET, 2, 'AIY_USER0', active_low=False), PwmSpec(0, 'pwm0'))
+PIN_B = AIYPinSpec(GpioSpec(PIN_OFFSET, 3, 'AIY_USER1', active_low=False), PwmSpec(1, 'pwm1'))
+PIN_C = AIYPinSpec(GpioSpec(PIN_OFFSET, 8, 'AIY_USER2', active_low=False), PwmSpec(2, 'pwm2'))
+PIN_D = AIYPinSpec(GpioSpec(PIN_OFFSET, 9, 'AIY_USER3', active_low=False), PwmSpec(3, 'pwm3'))
+LED_1 = AIYPinSpec(GpioSpec(PIN_OFFSET, 13, 'AIY_LED0', active_low=True), None)
+LED_2 = AIYPinSpec(GpioSpec(PIN_OFFSET, 14, 'AIY_LED1', active_low=True), None)
 
 BUZZER_GPIO_PIN = 22
 BUTTON_GPIO_PIN = 23

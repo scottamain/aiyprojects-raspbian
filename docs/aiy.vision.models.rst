@@ -4,8 +4,8 @@ aiy.vision.models
 A collection of modules that perform ML inferences with specific types of
 image classification and object detection models.
 
-Each of these modules has a corresponding sample app in `src/examples/vision/
-<https://github.com/google/aiyprojects-raspbian/tree/aiyprojects/src/examples/vision>`_.
+Each of these modules has a corresponding sample app in
+:github:`src/examples/vision`.
 Also see the instructions to `run the models with the Vision Kit
 <https://aiyprojects.withgoogle.com/models/>`_.
 
@@ -54,14 +54,6 @@ aiy.vision.models.object\_detection
 -----------------------------------
 
 .. automodule:: aiy.vision.models.object_detection
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-aiy.vision.models.utils
------------------------
-
-.. automodule:: aiy.vision.models.utils
     :members:
     :undoc-members:
     :show-inheritance:
